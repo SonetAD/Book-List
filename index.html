@@ -34,6 +34,23 @@
 			p {
 				text-align: center;
 			}
+			.deletefulllist {
+				display: flex;
+				justify-content: center;
+			}
+			#deletefulllistbtn {
+				background-color: red;
+				color: white;
+				font-weight: bolder;
+				border-radius: 5px;
+				border: 1px solid white;
+				transition: all 0.7s;
+			}
+			#deletefulllistbtn:hover {
+				background-color: white;
+				color: black;
+				transform: translateY(-5px);
+			}
 		</style>
 	</head>
 	<body>
@@ -92,6 +109,9 @@
 				</thead>
 				<tbody id="booklist"></tbody>
 			</table>
+			<div class="deletefulllist">
+				<button id="deletefulllistbtn">Delete All</button>
+			</div>
 		</div>
 		<script src="app.js"></script>
 	</body>

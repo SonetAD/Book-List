@@ -3,6 +3,10 @@ let domTitle = JSON.parse(localStorage.getItem('title'));
 let domAuthor = JSON.parse(localStorage.getItem('author'));
 let domIsbn = JSON.parse(localStorage.getItem('isbn'));
 if (domTitle == null || domTitle == []) {
+	initiateLocalStorage();
+}
+
+function initiateLocalStorage() {
 	let x = [];
 	let y = [];
 	let z = [];
@@ -85,7 +89,7 @@ class Ui {
 //  manupulate data from local storage
 
 document.addEventListener('DOMContentLoaded', function () {
-	if (domTitle.length != 0) {
+	if (domTitle.length > 0) {
 		for (i = 0; i < domTitle.length; i++) {
 			const bookInstance2 = new Book(domTitle[i], domAuthor[i], domIsbn[i]);
 			const uiInstance3 = new Ui();
@@ -129,3 +133,25 @@ document.querySelector('#booklist').addEventListener('click', function (e) {
 		uiInstance2.showAlert('Book has removed', 'success');
 	}
 });
+
+//  delete full table
+
+document
+	.querySelector('#deletefulllistbtn')
+	.addEventListener('click', function (e) {
+		let uiInstance4 = new Ui();
+
+		if (domTitle.length > 0) {
+			if (confirm('Are you sure you want to delete the entire list?')) {
+				initiateLocalStorage();
+				uiInstance4.showAlert(
+					"The book list has fully deleted.Let's start your new booklist",
+					'success'
+				);
+				window.location.href = 'index.html';
+			}
+		} else {
+			uiInstance4.showAlert('There is no books in the list.', 'error');
+		}
+		e.preventDefault();
+	});
