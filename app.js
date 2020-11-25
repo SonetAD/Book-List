@@ -36,11 +36,9 @@ class Ui {
         `;
 		if (domTitle.includes(bookinfo.title) == false) {
 			domTitle.push(bookinfo.title);
-			domAuthor.push(bookinfo.addBook);
+			domAuthor.push(bookinfo.author);
 			domIsbn.push(bookinfo.isbn);
-			localStorage.setItem('title', JSON.stringify(domTitle));
-			localStorage.setItem('author', JSON.stringify(domAuthor));
-			localStorage.setItem('isbn', JSON.stringify(domIsbn));
+			this.addToStorage();
 		}
 		bookList.appendChild(createRow);
 
@@ -75,6 +73,9 @@ class Ui {
 		domTitle.splice(findIndex, 1);
 		domAuthor.splice(findIndex, 1);
 		domIsbn.splice(findIndex, 1);
+		this.addToStorage();
+	}
+	addToStorage() {
 		localStorage.setItem('title', JSON.stringify(domTitle));
 		localStorage.setItem('author', JSON.stringify(domAuthor));
 		localStorage.setItem('isbn', JSON.stringify(domIsbn));
