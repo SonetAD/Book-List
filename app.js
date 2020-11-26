@@ -45,8 +45,8 @@ class Ui {
 			domIsbn.push(bookinfo.isbn);
 			this.addToStorage();
 		}
-		bookList.appendChild(createRow);
 		this.totalBook();
+		bookList.appendChild(createRow);
 
 		const clearfield = document.querySelectorAll('.clearfield');
 		clearfield.forEach(function (n) {
@@ -91,6 +91,7 @@ class Ui {
 		let totalDiv = document.querySelector('.total');
 		if (domTitle.length > 0) {
 			totalDiv.textContent = `Total: ${domTitle.length}`;
+			totalDiv.style.display = 'flex';
 		} else {
 			totalDiv.style.display = 'none';
 		}
@@ -155,10 +156,7 @@ document
 		if (domTitle.length > 0) {
 			if (confirm('Are you sure you want to delete the entire list?')) {
 				initiateLocalStorage();
-				uiInstance4.showAlert(
-					"The book list has fully deleted.Let's start your new booklist",
-					'success'
-				);
+				uiInstance4.showAlert('The book list has fully deleted.', 'success');
 				window.location.href = 'index.html';
 			}
 		} else {
