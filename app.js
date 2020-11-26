@@ -37,7 +37,8 @@ class Ui {
         <td>${bookinfo.isbn}</td>
         <td class='deleteitem'>x</td>
 
-        `;
+		`;
+
 		if (domTitle.includes(bookinfo.title) == false) {
 			domTitle.push(bookinfo.title);
 			domAuthor.push(bookinfo.author);
@@ -45,6 +46,7 @@ class Ui {
 			this.addToStorage();
 		}
 		bookList.appendChild(createRow);
+		this.totalBook();
 
 		const clearfield = document.querySelectorAll('.clearfield');
 		clearfield.forEach(function (n) {
@@ -77,12 +79,21 @@ class Ui {
 		domTitle.splice(findIndex, 1);
 		domAuthor.splice(findIndex, 1);
 		domIsbn.splice(findIndex, 1);
+		this.totalBook();
 		this.addToStorage();
 	}
 	addToStorage() {
 		localStorage.setItem('title', JSON.stringify(domTitle));
 		localStorage.setItem('author', JSON.stringify(domAuthor));
 		localStorage.setItem('isbn', JSON.stringify(domIsbn));
+	}
+	totalBook() {
+		let totalDiv = document.querySelector('.total');
+		if (domTitle.length > 0) {
+			totalDiv.textContent = `Total: ${domTitle.length}`;
+		} else {
+			totalDiv.style.display = 'none';
+		}
 	}
 }
 
