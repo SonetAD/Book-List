@@ -22,11 +22,11 @@ Book List is a simple application to helps book lovers to keep track of all book
 
 ### Web
 
-<img title='Web' alt='Web preview' src='web.png'>
+<img width='250px' title='Web' alt='Web preview' src='web.png'>
 
 ### App
 
-<img title='App' alt='App preview' src='mobile.jpg'>
+<img width='150px' title='App' alt='App preview' src='mobile.jpg'>
 
 ## Developer:
 
